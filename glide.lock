@@ -1,0 +1,24 @@
+hash: 85dccbffa56f595e73f98b4a4adedc3b1c683f9b043c4854b7422a09db87b190
+updated: 2020-05-13T00:07:37.7284036+08:00
+imports:
+- name: github.com/go-sql-driver/mysql
+  version: 6313f20fe43bffaa8d750d5e840ff30706a5cddc
+- name: github.com/gorilla/mux
+  version: 75dcda0896e109a2a22c9315bca3bb21b87b2ba5
+- name: github.com/gorilla/websocket
+  version: b65e62901fc1c0d968042419e74789f6af455eb9
+- name: github.com/jinzhu/gorm
+  version: 7ea143b5484fe28148d5c73cfd43b26e8a89c94e
+  subpackages:
+  - dialects/mysql
+- name: github.com/jinzhu/inflection
+  version: 196e6ce06ca4513fbcfcbc35dc15f66074df47c9
+- name: github.com/rs/cors
+  version: d4dacab0671f9aedbf3924d3df2a4a95c8c11a87
+- name: github.com/tidwall/gjson
+  version: f042915ca17de35980544c91ab2c8ceb73b682f2
+- name: github.com/tidwall/match
+  version: 33827db735fff6510490d69a8622612558a557ed
+- name: github.com/tidwall/pretty
+  version: b2475501f89994f7ea30b3c94ba86b49079961fe
+testImports: []
