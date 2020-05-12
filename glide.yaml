@@ -1,0 +1,16 @@
+package: golangForHeroku
+import:
+- package: api/db
+- package: api/model
+  subpackages:
+  - socket
+- package: api/route
+  subpackages:
+  - socket
+- package: github.com/gorilla/mux
+- package: github.com/gorilla/websocket
+- package: github.com/jinzhu/gorm
+  subpackages:
+  - dialects/mysql
+- package: github.com/rs/cors
+- package: github.com/tidwall/gjson
