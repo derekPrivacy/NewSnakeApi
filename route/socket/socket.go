@@ -42,22 +42,27 @@ func SocketHandler(w http.ResponseWriter, r *http.Request) {
 
 		UpdateAvatar(cReq)
 
+		break
+
 	case "spawnFood":
 
 		cRes = SpawnFood(cReq)
 
+		res2B, _ := json.Marshal(cRes)
+		log.Printf("whats in you cRes " + string(res2B))
+
+		if len(cRes.Room.Data) >= 2 {
+
+			for _, c := range cRes.Room.ConnectionArr {
+				c.Connection.WriteJSON(cRes.Room)
+			}
+		}
+
+		break
 	case "gameFinish":
 
-	}
+		break
 
-	res2B, _ := json.Marshal(cRes)
-	log.Printf("whats in you cRes " + string(res2B))
-
-	if len(cRes.Room.Data) >= 2 {
-
-		for _, c := range cRes.Room.ConnectionArr {
-			c.Connection.WriteJSON(cRes.Room)
-		}
 	}
 
 }
