@@ -13,10 +13,10 @@ func cleanUpUpdate() {
 
 }
 
-func UpdateAvatar(cReq *wsModel.CReq) *wsModel.CRes {
+func UpdateAvatar(cReq *wsModel.CReq) {
 	defer cleanUpUpdate()
 
-	var cRes *wsModel.CRes = &wsModel.CRes{}
+	// var cRes *wsModel.CRes = &wsModel.CRes{}
 
 	// req:{roomId, avatarId, positionX ,positionY,direction,bodyLength}
 	//check request room id
@@ -32,7 +32,7 @@ func UpdateAvatar(cReq *wsModel.CReq) *wsModel.CRes {
 
 	var reqRoomId = cReq.RoomID
 
-	var reqRoom wsModel.Room
+	// var reqRoom wsModel.Room
 
 	var avatarExist bool = false
 
@@ -47,7 +47,7 @@ func UpdateAvatar(cReq *wsModel.CReq) *wsModel.CRes {
 					wsModel.RoomArr[index].Avatar[avatarIndex].PositionY = positionY
 					wsModel.RoomArr[index].Avatar[avatarIndex].BodyLength = bodyLength
 					wsModel.RoomArr[index].Avatar[avatarIndex].Direction = direction
-					reqRoom = wsModel.RoomArr[index]
+					// reqRoom = wsModel.RoomArr[index]
 
 					avatarExist = true
 
@@ -61,7 +61,7 @@ func UpdateAvatar(cReq *wsModel.CReq) *wsModel.CRes {
 				newAvatar := wsModel.Avatar{ID: avatarId, PositionX: positionX, PositionY: positionY, BodyLength: bodyLength, Direction: direction}
 
 				wsModel.RoomArr[index].Avatar = append(wsModel.RoomArr[index].Avatar, newAvatar)
-				reqRoom = wsModel.RoomArr[index]
+				// reqRoom = wsModel.RoomArr[index]
 
 			}
 
@@ -69,18 +69,18 @@ func UpdateAvatar(cReq *wsModel.CReq) *wsModel.CRes {
 		}
 	}
 
-	cRes = &wsModel.CRes{Room: reqRoom}
+	// cRes = &wsModel.CRes{Room: reqRoom}
 
-	log.Println("updated cRes room id is")
-	log.Println(cRes.Room.ID)
+	// log.Println("updated cRes room id is")
+	// log.Println(cRes.Room.ID)
 
-	for index, _ := range cRes.Room.Avatar {
-		log.Println(cRes.Room.Avatar[index].ID)
-		log.Println(cRes.Room.Avatar[index].PositionX)
-		log.Println(cRes.Room.Avatar[index].PositionY)
-		log.Println(cRes.Room.Avatar[index].BodyLength)
-		log.Println(cRes.Room.Avatar[index].Direction)
-	}
+	// for index, _ := range cRes.Room.Avatar {
+	// 	log.Println(cRes.Room.Avatar[index].ID)
+	// 	log.Println(cRes.Room.Avatar[index].PositionX)
+	// 	log.Println(cRes.Room.Avatar[index].PositionY)
+	// 	log.Println(cRes.Room.Avatar[index].BodyLength)
+	// 	log.Println(cRes.Room.Avatar[index].Direction)
+	// }
 
-	return cRes
+	// return cRes
 }

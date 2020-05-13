@@ -6,7 +6,6 @@ import (
 	socketRoute "api/route/socket"
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
@@ -37,7 +36,7 @@ func main() {
 	//make only add User to websocket connection
 	//rest of the message type to http
 
-	port, _ := os.LookupEnv("PORT")
+	// port, _ := os.LookupEnv("PORT")
 
-	log.Fatal(http.ListenAndServe(":"+port, c.Handler(router)))
+	log.Fatal(http.ListenAndServe(":8081", c.Handler(router)))
 }

@@ -40,7 +40,7 @@ func SocketHandler(w http.ResponseWriter, r *http.Request) {
 
 	case "updateAvatar":
 
-		cRes = UpdateAvatar(cReq)
+		UpdateAvatar(cReq)
 
 	case "spawnFood":
 
