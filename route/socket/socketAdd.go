@@ -3,7 +3,6 @@ package route
 import (
 	"log"
 	"net/http"
-	"sync"
 
 	wsModel "api/model/socket"
 
@@ -36,11 +35,8 @@ func SocketAdd(w http.ResponseWriter, r *http.Request) {
 
 	switch cReq.Type {
 	case "hello":
-		var wg sync.WaitGroup
 
-		wg.Add(1)
-		go SayHello(cReq, &wg)
-		wg.Wait()
+		SayHello(cReq)
 
 		break
 	case "addPlayer":

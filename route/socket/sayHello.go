@@ -16,13 +16,13 @@ func cleanUp(wg *sync.WaitGroup) {
 	mutex.Unlock()
 }
 
-func SayHello(cReq *wsModel.CReq, wg *sync.WaitGroup) {
-	defer cleanUp(wg)
+func SayHello(cReq *wsModel.CReq) {
+	// defer cleanUp(wg)
 
-	// defer wg.Done()
+	// // defer wg.Done()
 
-	mutex.Lock()
-	// defer mutex.Unlock()
+	// mutex.Lock()
+	// // defer mutex.Unlock()
 
 	log.Printf("my g is inside")
 
