@@ -28,6 +28,8 @@ func UpdateAvatar(cReq *wsModel.CReq) {
 	var positionY = cReq.PositionY
 
 	var direction = cReq.Direction
+	log.Println("im updating avatar and the direction send is " + direction)
+
 	var bodyLength = cReq.BodyLength
 
 	var reqRoomId = cReq.RoomID
