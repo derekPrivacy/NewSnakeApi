@@ -34,7 +34,7 @@ func UpdateAvatar(cReq *wsModel.CReq) {
 
 	var reqRoomId = cReq.RoomID
 
-	// var reqRoom wsModel.Room
+	var reqRoom wsModel.Room
 
 	var avatarExist bool = false
 
@@ -49,7 +49,7 @@ func UpdateAvatar(cReq *wsModel.CReq) {
 					wsModel.RoomArr[index].Avatar[avatarIndex].PositionY = positionY
 					wsModel.RoomArr[index].Avatar[avatarIndex].BodyLength = bodyLength
 					wsModel.RoomArr[index].Avatar[avatarIndex].Direction = direction
-					// reqRoom = wsModel.RoomArr[index]
+					reqRoom = wsModel.RoomArr[index]
 
 					avatarExist = true
 
@@ -63,11 +63,17 @@ func UpdateAvatar(cReq *wsModel.CReq) {
 				newAvatar := wsModel.Avatar{ID: avatarId, PositionX: positionX, PositionY: positionY, BodyLength: bodyLength, Direction: direction}
 
 				wsModel.RoomArr[index].Avatar = append(wsModel.RoomArr[index].Avatar, newAvatar)
-				// reqRoom = wsModel.RoomArr[index]
+				reqRoom = wsModel.RoomArr[index]
 
 			}
 
 			break
+		}
+	}
+
+	if len(reqRoom.Data) >= 2 {
+		for _, c := range reqRoom.ConnectionArr {
+			c.Connection.WriteJSON(reqRoom)
 		}
 	}
 
