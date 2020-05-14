@@ -1,2 +1,4 @@
 # api/route/socket
-route\socket\updateAvatar.go:76:34: reqRoom.Room undefined (type model.Room has no field or method Room)
+route\socket\sayHello.go:14:2: undefined: mutex
+route\socket\updateAvatar.go:16:2: undefined: mutex
+route\socket\updateAvatar.go:23:2: undefined: mutex

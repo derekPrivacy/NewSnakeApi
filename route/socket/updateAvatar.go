@@ -3,18 +3,26 @@ package route
 import (
 	wsModel "api/model/socket"
 	"log"
+	"sync"
 )
 
-func cleanUpUpdate() {
+var mutex sync.Mutex
+
+func cleanUpUpdate(wg *sync.WaitGroup) {
+	defer wg.Done()
 
 	if r := recover(); r != nil {
 		log.Println("recover in clean up: ", r)
 	}
 
+	mutex.Unlock()
+
 }
 
-func UpdateAvatar(cReq *wsModel.CReq) {
-	defer cleanUpUpdate()
+func UpdateAvatar(cReq *wsModel.CReq, wg *sync.WaitGroup) {
+	defer cleanUpUpdate(wg)
+
+	mutex.Lock()
 
 	// var cRes *wsModel.CRes = &wsModel.CRes{}
 

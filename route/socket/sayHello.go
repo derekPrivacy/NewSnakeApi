@@ -6,8 +6,6 @@ import (
 	"sync"
 )
 
-var mutex sync.Mutex
-
 func cleanUp(wg *sync.WaitGroup) {
 	defer wg.Done()
 	if r := recover(); r != nil {

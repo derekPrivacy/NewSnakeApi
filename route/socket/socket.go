@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"sync"
 
 	wsModel "api/model/socket"
 
@@ -39,9 +40,13 @@ func SocketHandler(w http.ResponseWriter, r *http.Request) {
 	switch cReq.Type {
 
 	case "updateAvatar":
+		var wg sync.WaitGroup
 
-		UpdateAvatar(cReq)
+		wg.Add(1)
 
+		go UpdateAvatar(cReq, &wg)
+
+		wg.Wait()
 		break
 
 	case "spawnFood":
