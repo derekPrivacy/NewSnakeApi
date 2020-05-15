@@ -1,7 +1,6 @@
 package route
 
 import (
-	"encoding/json"
 	"log"
 	"net/http"
 	"sync"
@@ -35,8 +34,6 @@ func SocketHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var cRes *wsModel.CRes
-
 	switch cReq.Type {
 
 	case "updateAvatar":
@@ -47,25 +44,6 @@ func SocketHandler(w http.ResponseWriter, r *http.Request) {
 		go UpdateAvatar(cReq, &wg)
 
 		wg.Wait()
-		break
-
-	case "spawnFood":
-
-		cRes = SpawnFood(cReq)
-
-		res2B, _ := json.Marshal(cRes)
-		log.Printf("whats in you cRes " + string(res2B))
-
-		if len(cRes.Room.Data) >= 2 {
-
-			for _, c := range cRes.Room.ConnectionArr {
-				c.Connection.WriteJSON(cRes.Room)
-			}
-		}
-
-		break
-	case "gameFinish":
-
 		break
 
 	}

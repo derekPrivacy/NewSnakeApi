@@ -13,7 +13,7 @@ func SocketAdd(w http.ResponseWriter, r *http.Request) {
 
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
-	log.Println("fukcin called how many times")
+	log.Println("websocketAdd called how many times")
 
 	var cReq *wsModel.CReq = &wsModel.CReq{}
 
@@ -44,6 +44,11 @@ func SocketAdd(w http.ResponseWriter, r *http.Request) {
 	case "addPlayer":
 
 		AddPlayer(cReq, conn)
+		break
+
+	case "spawnFood":
+
+		SpawnFood(cReq)
 		break
 
 	case "gameOver":

@@ -21,8 +21,13 @@ type CReq struct {
 	BodyLength int
 	Direction  string
 	//
-	FoodPositionX float64
-	FoodPositionY float64
+
+	FoodType string
+	FoodOneX float64
+	FoodOneY float64
+
+	FoodTwoX float64
+	FoodTwoY float64
 }
 
 type CRes struct {
