@@ -24,12 +24,6 @@ func UpdateAvatar(cReq *wsModel.CReq, wg *sync.WaitGroup) {
 
 	mutex.Lock()
 
-	// var cRes *wsModel.CRes = &wsModel.CRes{}
-
-	// req:{roomId, avatarId, positionX ,positionY,direction,bodyLength}
-	//check request room id
-	// update the avatar in the avatar array
-
 	var avatarId = cReq.AvatarID
 
 	var positionX = cReq.PositionX
@@ -85,18 +79,4 @@ func UpdateAvatar(cReq *wsModel.CReq, wg *sync.WaitGroup) {
 		}
 	}
 
-	// cRes = &wsModel.CRes{Room: reqRoom}
-
-	// log.Println("updated cRes room id is")
-	// log.Println(cRes.Room.ID)
-
-	// for index, _ := range cRes.Room.Avatar {
-	// 	log.Println(cRes.Room.Avatar[index].ID)
-	// 	log.Println(cRes.Room.Avatar[index].PositionX)
-	// 	log.Println(cRes.Room.Avatar[index].PositionY)
-	// 	log.Println(cRes.Room.Avatar[index].BodyLength)
-	// 	log.Println(cRes.Room.Avatar[index].Direction)
-	// }
-
-	// return cRes
 }
