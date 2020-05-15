@@ -13,6 +13,8 @@ func AddPlayer(cReq *wsModel.CReq, conn *websocket.Conn) {
 
 	connection := wsModel.Connection{Player: cReq.Data, Connection: conn}
 
+	log.Println("incomingggggg connection " + cReq.Data)
+
 	var reqRoomId = cReq.RoomID
 
 	var reqRoom wsModel.Room
@@ -23,7 +25,8 @@ func AddPlayer(cReq *wsModel.CReq, conn *websocket.Conn) {
 		if room.ID == reqRoomId {
 			wsModel.RoomArr[index].ConnectionArr = append(room.ConnectionArr, connection)
 
-			wsModel.RoomArr[index].Data = append(room.Data, cReq.Data)
+			//remove duplicate here
+			wsModel.RoomArr[index].Data = unique(append(room.Data, cReq.Data))
 
 			roomExist = true
 			reqRoom = wsModel.RoomArr[index]
@@ -58,4 +61,16 @@ func AddPlayer(cReq *wsModel.CReq, conn *websocket.Conn) {
 		}
 	}
 
+}
+
+func unique(stringSlice []string) []string {
+	keys := make(map[string]bool)
+	list := []string{}
+	for _, entry := range stringSlice {
+		if _, value := keys[entry]; !value {
+			keys[entry] = true
+			list = append(list, entry)
+		}
+	}
+	return list
 }
