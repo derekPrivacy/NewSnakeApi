@@ -75,8 +75,18 @@ func UpdateAvatar(cReq *wsModel.CReq, wg *sync.WaitGroup) {
 
 	if len(reqRoom.Data) >= 2 {
 		for _, c := range reqRoom.ConnectionArr {
-			c.Connection.WriteJSON(reqRoom)
+			// response, _ := json.Marshal({"Avatar":reqRoom.Avatar})
+
+			obj := &AvatarRes{Avatar: reqRoom.Avatar}
+
+			// res, _ := json.Marshal(obj)
+
+			c.Connection.WriteJSON(obj)
 		}
 	}
 
+}
+
+type AvatarRes struct {
+	Avatar []wsModel.Avatar
 }

@@ -1,0 +1,2 @@
+# api/route/socket
+route\socket\updateAvatar.go:83:4: res declared but not used
