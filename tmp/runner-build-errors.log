@@ -1,2 +1,2 @@
 # api/route/socket
-route\socket\updateAvatar.go:83:4: res declared but not used
+route\socket\spawnFood.go:60:4: obj declared but not used

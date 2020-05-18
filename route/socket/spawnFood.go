@@ -57,8 +57,14 @@ func SpawnFood(cReq *wsModel.CReq) {
 
 	if len(reqRoom.ConnectionArr) >= 2 {
 		for _, c := range reqRoom.ConnectionArr {
-			c.Connection.WriteJSON(reqRoom)
+			obj := &FoodRes{Food: reqRoom.Food}
+
+			c.Connection.WriteJSON(obj)
 		}
 	}
 
+}
+
+type FoodRes struct {
+	Food wsModel.Food
 }

@@ -57,10 +57,16 @@ func AddPlayer(cReq *wsModel.CReq, conn *websocket.Conn) {
 	if len(cRes.Room.Data) >= 2 {
 
 		for _, c := range cRes.Room.ConnectionArr {
-			c.Connection.WriteJSON(cRes.Room)
+			obj := &PlayerRes{Data: cRes.Room.Data}
+
+			c.Connection.WriteJSON(obj)
 		}
 	}
 
+}
+
+type PlayerRes struct {
+	Data []string
 }
 
 func unique(stringSlice []string) []string {
