@@ -14,6 +14,8 @@ var DB *gorm.DB
 func DbInit() {
 	var err error
 	DB, err = gorm.Open("mysql", "haige:password@(myfirstmysql.cazjqlq1ycv3.us-east-2.rds.amazonaws.com:3306)/mydb?charset=utf8&parseTime=True&loc=Local")
+	//username:password@host:port/dbName
+
 	if err != nil {
 		fmt.Println("error catched")
 	}
